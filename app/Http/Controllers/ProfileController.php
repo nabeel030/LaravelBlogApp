@@ -80,12 +80,12 @@ class ProfileController extends Controller
 
         $user = Auth::user();
 
-        if ($request->hasFile('avatar')) {
+        if ($request->hasFile('img')) {
             $avatar = $request->img;
 
             $avatar_new_name = Time() . $avatar->getClientOriginalName();
-            $avatar->move('C:\xampp\htdocs\blog\public\uploads\avatars',$avatar_new_name);
-            $user->profile->avatar = 'C:/xampp/htdocs/blog/public/uploads/avatar/' . $avatar_new_name;
+            $avatar->move('uploads/avatars',$avatar_new_name);
+            $user->profile->avatar = 'uploads/avatars/' . $avatar_new_name;
             $user->profile->save();
         }
 

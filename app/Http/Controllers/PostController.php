@@ -29,11 +29,12 @@ class PostController extends Controller
     public function create()
     {
         $category = Category::all();
-        if ($category->count() == 0) {
-          Session::flash('info','You need to have Category to create a new post!');
+        $tags = Tag::all();
+        if ($category->count() == 0 || $tags->count()==0) {
+          Session::flash('info','You need to have Category and tags to create a new post!');
           return redirect()->back();
         }
-        return view('admin.posts.create')->with('category',$category)->with('tags',Tag::all());
+        return view('admin.posts.create')->with('category',$category)->with('tags',$tags);
     }
 
     /**

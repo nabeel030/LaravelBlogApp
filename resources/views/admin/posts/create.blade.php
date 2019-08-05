@@ -43,7 +43,7 @@
         @endforeach
         <br>
         <label for="content">Content</label><br>
-        <textarea name="content" rows="6" cols="95"></textarea>
+        <textarea name="content" id="content" rows="6" cols="95"></textarea>
         <div class="text-center">
           <button type="submit" class="btn btn-outline-primary">Store Post</button>
         </div>
@@ -51,4 +51,17 @@
     </div>
 </div>
 
+@stop
+
+@section('styles')
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
+@stop
+
+@section('scripts')
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
+  <script>
+            $(document).ready(function() {
+            $('#content').summernote();
+            });
+  </script>
 @stop

@@ -12,7 +12,7 @@
       <th scope="col">Image</th>
       <th scope="col">Name</th>
       <th scope="col">Permissions</th>
-      <th scope="col">Trash</th>
+      <th scope="col">Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -26,7 +26,11 @@
       @else
         <td><a href="{{Route('user.admin',['id' => $user->id])}}" class="btn btn-success">Make Admin</a></td>
       @endif
-      <td><a href="{{Route('user.trash', ['id' => $user->id])}}" class="btn btn-danger">X</a></td>
+      <td>
+        @if(Auth::id()!==$user->id)
+          <a href="{{Route('user.destroy', ['id' => $user->id])}}" class="btn btn-danger">X</a>
+        @endif
+      </td>
     </tr>
     @endforeach
 

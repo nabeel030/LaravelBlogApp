@@ -100,7 +100,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $user = User::find($id);
+      $user->profile->delete();
+      $user->delete();
+      Session::flash('success','User Deleted Successfully');
+      return redirect()->back();
     }
 
     public function make_admin($id)
@@ -117,12 +121,5 @@ class UserController extends Controller
           $user->admin = 0;
           $user->save();
           return redirect()->back();
-    }
-
-    public function trash($id)
-    {
-        $user = User::find($id);
-        $user->delete();
-        return redirect()->back();
     }
 }

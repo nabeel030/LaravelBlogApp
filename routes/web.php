@@ -35,8 +35,10 @@ Route::group(['prefix'=>'admin', 'middleware'=> 'auth'], function()
   Route::post('/users/store','UserController@store')->name('user.store');
   Route::get('/user/make-admin/{id}','UserController@make_admin')->name('user.admin');
   Route::get('/user/remove-admin/{id}','UserController@remove_admin')->name('user.not_admin');
-  Route::get('/user/trash/{id}','UserController@trash')->name('user.trash');
+  Route::get('/user/destroy/{id}','UserController@destroy')->name('user.destroy');
   Route::get('/user/profile','ProfileController@index')->name('profile.index');
   Route::post('/user/update','ProfileController@update')->name('profile.update');
+  Route::get('/blog/setting', 'SettingController@index')->name('blog.setting');
+  Route::post('/blog/setting/update','SettingController@update')->name('setting.update');
 
 });

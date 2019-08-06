@@ -1,8 +1,8 @@
 <?php
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use \App\Setting;
+
+Route::get('/','FrontendController@index')->name('index');
 
 Auth::routes();
 

@@ -53,4 +53,6 @@ class FrontendController extends Controller
                                  ->with('categories', Category::take(5)->get())
                                  ->with('tagId', Tag::find($id));
     }
+
+
 }

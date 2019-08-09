@@ -134,8 +134,8 @@
     <div class="container">
         <div class="row">
             <div class="form_search-wrap">
-                <form>
-                    <input class="overlay_search-input" placeholder="Type and hit Enter..." type="text">
+                <form action="" method="get">
+                    <input class="overlay_search-input" placeholder="Type and hit Enter..." type="text" name='query'>
                     <a href="#" class="overlay_search-close">
                         <span></span>
                         <span></span>

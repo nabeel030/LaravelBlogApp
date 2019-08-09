@@ -1,6 +1,7 @@
 <?php
 
 use \App\Setting;
+use \App\Post;
 
 Route::get('/login', function(){
   return view('auth.login');

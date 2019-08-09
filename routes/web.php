@@ -2,7 +2,14 @@
 
 use \App\Setting;
 
+Route::get('/login', function(){
+  return view('auth.login');
+});
+
 Route::get('/','FrontendController@index')->name('index');
+Route::get('/{slug}','FrontendController@singlePost')->name('single.post');
+Route::get('/category/{id}/{name}', 'FrontendController@categoryPage')->name('categories');
+Route::get('/tag/{id}/{tag}', 'FrontendController@tagsPage')->name('tags');
 
 Auth::routes();
 

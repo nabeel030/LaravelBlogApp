@@ -14,10 +14,10 @@
 
     <!--Plugins styles-->
 
-    <link rel="stylesheet" type="text/css" href="app/css/jquery.mCustomScrollbar.min.css">
-    <link rel="stylesheet" type="text/css" href="app/css/swiper.min.css">
-    <link rel="stylesheet" type="text/css" href="app/css/primary-menu.css">
-    <link rel="stylesheet" type="text/css" href="app/css/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('app/css/jquery.mCustomScrollbar.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app/css/swiper.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app/css/primary-menu.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app/css/magnific-popup.css')}}">
 
     <!--Styles for RTL-->
 
@@ -46,7 +46,7 @@
             <div class="header-content-wrapper">
                 <div class="logo">
                     <div class="logo-text">
-                        <div class="logo-title">{{$setting->site_name}}</div>
+                        <div class="logo-title"><a href="{{route('index')}}">{{$setting->site_name}}</a></div>
                     </div>
                 </div>
 
@@ -64,7 +64,7 @@
 
                         @foreach($categories as $cat)
                         <li class="">
-                            <a href="">{{$cat->name}}</a>
+                            <a href="{{route('categories', ['id' => $cat->id,'name' => $cat->name])}}">{{$cat->name}}</a>
                         </li>
                         @endforeach
                     </ul>
@@ -79,5 +79,3 @@
             </div>
     </div>
 </header>
-
-<div class="header-spacer"></div>

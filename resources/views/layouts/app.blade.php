@@ -61,7 +61,7 @@
                                   <a class="dropdown-item" href="{{ route('profile.index') }}">
                                       Profile
                                   </a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a class="dropdown-item" href="{{route('logout')}}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
@@ -89,6 +89,7 @@
 
             <div class="col-lg-4">
                 <ul class="list-group">
+                  <a href="{{Route('index')}}" class="list-group-item">Front End</a>
                   <a href="{{Route('home')}}" class="list-group-item">Home</a>
 
                   @if(Auth::user()->admin)
@@ -103,6 +104,7 @@
                   <a href="{{Route('category.home')}}" class="list-group-item">All Categories</a>
                   <a href="{{Route('tag.create')}}" class="list-group-item">Create Tag</a>
                   <a href="{{Route('tag.index')}}" class="list-group-item">All Tags</a>
+                  <a href="{{Route('self.delete',['id'=>Auth::user()->id])}}" class="list-group-item">Delete Account</a>
                 </ul>
             </div>
 

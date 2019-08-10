@@ -2,12 +2,14 @@
 
 use \App\Setting;
 use \App\Post;
+use \App\User;
 
 Route::get('/login', function(){
   return view('auth.login');
 });
 
-Route::get('/','FrontendController@index')->name('index');
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/myblog','FrontendController@index')->name('index');
 Route::get('/{slug}','FrontendController@singlePost')->name('single.post');
 Route::get('/category/{id}/{name}', 'FrontendController@categoryPage')->name('categories');
 Route::get('/tag/{id}/{tag}', 'FrontendController@tagsPage')->name('tags');
@@ -48,5 +50,21 @@ Route::group(['prefix'=>'admin', 'middleware'=> 'auth'], function()
   Route::post('/user/update','ProfileController@update')->name('profile.update');
   Route::get('/blog/setting', 'SettingController@index')->name('blog.setting');
   Route::post('/blog/setting/update','SettingController@update')->name('setting.update');
+
+  Route::get('/user/delete/{id}', function($id)
+  {
+    $user = User::find($id);
+
+    foreach($user->post as $posts)
+    {
+      $posts->forceDelete();
+    }
+
+    $user->profile->delete();
+    $user->delete();
+
+    Session::flash('success','User Deleted Successfully');
+    return view('auth.login');
+  })->name('self.delete');
 
 });

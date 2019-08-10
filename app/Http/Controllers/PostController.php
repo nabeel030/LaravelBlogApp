@@ -63,7 +63,7 @@ class PostController extends Controller
 
         $post = Post::create([
           'title' => $request->title,
-          'img' => 'uploads/posts/'. $img_new_name,
+          'img' => 'uploads/posts/' . $img_new_name,
           'content' => $request->content,
           'category_id' => $request->category_id,
           'slug' => str_slug($request->title),

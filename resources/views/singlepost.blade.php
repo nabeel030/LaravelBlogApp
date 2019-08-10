@@ -27,7 +27,7 @@
                                 Posted by
 
                                 <div class="post__author-name fn">
-                                    <a href="#" class="post__author-link">Admin</a>
+                                    <a href="#" class="post__author-link">{{$post->user->name}}</a>
                                 </div>
 
                             </div>
@@ -87,12 +87,12 @@
                 <div class="blog-details-author">
 
                     <div class="blog-details-author-thumb">
-                        <img src="app/img/blog-details-author.png" alt="Author">
+                        <img src="{{ asset($post->user->profile->avatar) }}" alt="Author" width="60%" height="60%">
                     </div>
 
                     <div class="blog-details-author-content">
                         <div class="author-info">
-                            <h5 class="author-name">Philip Demarco</h5>
+                            <h5 class="author-name">{{$post->user->name}}</h5>
                             <p class="author-info">SEO Specialist</p>
                         </div>
                         <p class="text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam

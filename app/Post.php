@@ -10,7 +10,7 @@ class Post extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['title','img','category_id','content','slug'];
+    protected $fillable = ['title','img','category_id','content','slug','user_id'];
 
     public function getFeaturedAttribute($img)
     {

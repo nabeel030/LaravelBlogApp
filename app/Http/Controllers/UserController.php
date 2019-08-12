@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Session;
 use App\Profile;
+use App\Setting;
 
 class UserController extends Controller
 {
@@ -22,7 +23,8 @@ class UserController extends Controller
     public function index()
     {
           $users = User::all();
-          return view('admin.users.index')->with('users',$users);
+          return view('admin.users.index')->with('users',$users)
+                                            ->with('site_name', Setting::first()->site_name);
     }
 
     /**

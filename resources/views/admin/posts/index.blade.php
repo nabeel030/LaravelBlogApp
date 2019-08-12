@@ -2,6 +2,7 @@
 
 
 @section('content')
+
 <div class="card">
     <div class="card-header">Published Posts</div>
 

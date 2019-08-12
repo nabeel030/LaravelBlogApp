@@ -67,6 +67,13 @@
                             <a href="{{route('categories', ['id' => $cat->id,'name' => $cat->name])}}">{{$cat->name}}</a>
                         </li>
                         @endforeach
+                        @if(Auth::check())
+                          @if(Auth::user()->admin)
+                            <li class="">
+                              <a href="{{route('dashboard')}}">Admin CMS</a>
+                            </li>
+                          @endif
+                        @endif
                     </ul>
                 </nav>
                 <ul class="nav-add">

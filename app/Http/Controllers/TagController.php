@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Tag;
+use App\Setting;
 use Session;
 
 class TagController extends Controller
@@ -15,7 +16,8 @@ class TagController extends Controller
      */
     public function index()
     {
-        return view('admin.tags.home')->with('tags',Tag::all());
+        return view('admin.tags.home')->with('tags',Tag::all())
+                                        ->with('site_name', Setting::first()->site_name);
     }
 
     /**
@@ -25,7 +27,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        return view('admin.tags.create');
+        return view('admin.tags.create')->with('site_name', Setting::first()->site_name);
     }
 
     /**
@@ -63,7 +65,8 @@ class TagController extends Controller
     public function edit($id)
     {
         $tag = Tag::find($id);
-        return view('admin.tags.update')->with('tags',$tag);
+        return view('admin.tags.update')->with('tags',$tag)
+                                          ->with('site_name', Setting::first()->site_name);
     }
 
     /**

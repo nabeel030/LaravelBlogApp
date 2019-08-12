@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Post;
 use App\Tag;
+use App\Setting;
 use Session;
 use Auth;
 
@@ -19,7 +20,8 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        return view('admin.posts.index')->with('posts',$posts);
+        return view('admin.posts.index')->with('posts',$posts)
+                                          ->with('site_name', Setting::first()->site_name);
     }
 
     /**
@@ -35,7 +37,8 @@ class PostController extends Controller
           Session::flash('info','You need to have Category and tags to create a new post!');
           return redirect()->back();
         }
-        return view('admin.posts.create')->with('category',$category)->with('tags',$tags);
+        return view('admin.posts.create')->with('category',$category)->with('tags',$tags)
+                                          ->with('site_name', Setting::first()->site_name);
     }
 
     /**
@@ -101,7 +104,8 @@ class PostController extends Controller
           $category = Category::all();
 
           return view('admin.posts.update')->with('posts',$post)->with('category',$category)
-                                                ->with('tags',Tag::all());
+                                                ->with('tags',Tag::all())
+                                                  ->with('site_name', Setting::first()->site_name);
     }
 
     /**
@@ -159,7 +163,8 @@ class PostController extends Controller
     public function TrashedPosts()
     {
         $trashed_posts = Post::onlyTrashed()->get();
-        return view('admin.posts.trash')->with('posts',$trashed_posts);
+        return view('admin.posts.trash')->with('posts',$trashed_posts)
+                                          ->with('site_name', Setting::first()->site_name);
     }
 
     public function kill($id)

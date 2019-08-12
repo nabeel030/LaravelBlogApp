@@ -5,11 +5,10 @@ use \App\Post;
 use \App\User;
 
 Route::get('/login', function(){
-  return view('auth.login');
+  return view('auth.login')->with('site_name', Setting::first()->site_name);
 });
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('/myblog','FrontendController@index')->name('index');
+Route::get('/','FrontendController@index')->name('index');
 Route::get('/{slug}','FrontendController@singlePost')->name('single.post');
 Route::get('/category/{id}/{name}', 'FrontendController@categoryPage')->name('categories');
 Route::get('/tag/{id}/{tag}', 'FrontendController@tagsPage')->name('tags');
@@ -18,7 +17,7 @@ Auth::routes();
 
 Route::group(['prefix'=>'admin', 'middleware'=> 'auth'], function()
 {
-  Route::get('/home', 'HomeController@index')->name('home');
+  Route::get('/home', 'HomeController@index')->name('dashboard');
   Route::get('/post/create','PostController@create')->name('post.create');
   Route::post('/post/store','PostController@store')->name('post.store');
   Route::get('/category/create','CategoriesController@create')->name('category.create');

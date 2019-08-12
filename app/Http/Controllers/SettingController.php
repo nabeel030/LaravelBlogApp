@@ -9,7 +9,8 @@ class SettingController extends Controller
 {
     public function index()
     {
-        return view('admin.setting')->with('setting', Setting::first());
+        return view('admin.setting')->with('setting', Setting::first())
+                                    ->with('site_name', Setting::first()->site_name);
     }
 
     public function update(Request $req)

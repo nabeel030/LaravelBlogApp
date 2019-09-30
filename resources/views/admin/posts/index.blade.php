@@ -23,7 +23,7 @@
     <tr>
       <td><img src="{{$post->img}}" alt="Image" width="50px" height="50px"></td>
       <td>{{$post->title}}</td>
-      <td><a href="{{Route('post.edit',['id'=>$post->id])}}" class="btn btn-success">Update</a></td>
+      <td><a href="{{Route('post.edit',['id'=>$post->id])}}" class="btn btn-success">Edit</a></td>
       <td><a href="{{Route('post.delete',['id'=>$post->id])}}" class="btn btn-danger">X</a></td>
     </tr>
     @endforeach

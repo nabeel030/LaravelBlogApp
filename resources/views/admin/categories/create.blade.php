@@ -11,7 +11,7 @@
       <form class="form-group" action="{{Route('category.store')}}" method="post">
         {{csrf_field()}}
         <label for="name">Category Name</label>
-        <input type="text" class="form-control" name="name" value="" required><br>
+        <input type="text" class="form-control" name="name"><br>
         <div class="text-center">
           <button type="submit" class="btn btn-outline-primary">Store Category</button>
         </div>
@@ -19,4 +19,4 @@
     </div>
 </div>
 
-@stop
+@endsection

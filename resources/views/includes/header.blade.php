@@ -3,7 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>{{$setting->site_name}}</title>
+    <title></title>
 
     <link rel="stylesheet" type="text/css" href="{{asset('app/css/fonts.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app/css/crumina-fonts.css')}}">
@@ -67,13 +67,6 @@
                             <a href="{{route('categories', ['id' => $cat->id,'name' => $cat->name])}}">{{$cat->name}}</a>
                         </li>
                         @endforeach
-                        @if(Auth::check())
-                          @if(Auth::user()->admin)
-                            <li class="">
-                              <a href="{{route('dashboard')}}">Admin CMS</a>
-                            </li>
-                          @endif
-                        @endif
                     </ul>
                 </nav>
                 <ul class="nav-add">
